@@ -78,4 +78,11 @@
           안내를 받은 스레드가 락 획득을 시도     
           - 별도의 리트라이 로직 필요 없음
 
+- Lettuce
+  - 
+  - Mysql을 활용한 Named Lock과 유사하지만 세션관리에 신경을 쓰지 않는다는 점, 
+   Redis를 사용한다는 점에서 차이가 있다.<br>
+  - 구현이 간단함
+  - spin lock 방식으로 redis에 부하를 줄 수 있다.
+    - thread.sleep()을 통해 텀을 주었음
 </details>
