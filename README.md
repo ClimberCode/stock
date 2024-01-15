@@ -82,7 +82,23 @@
   - 
   - Mysql을 활용한 Named Lock과 유사하지만 세션관리에 신경을 쓰지 않는다는 점, 
    Redis를 사용한다는 점에서 차이가 있다.<br>
-  - 구현이 간단함
-  - spin lock 방식으로 redis에 부하를 줄 수 있다.
-    - thread.sleep()을 통해 텀을 주었음
+  - 잠점
+    - 구현이 간단함
+    - spring data redis를 사용하면 lettuce가 기본이기 때문에 별도의 라이브러리를 사용하지 않아도 됨
+    - 단점
+      - spin lock 방식으로 동시에 많은 쓰레드가 Lock 획득 대기 중이라면 redis에 부하를 줄 수 있다.
+        - thread.sleep()을 통해 텀을 줄 수 있음.
+- Redisson
+  - 
+  - Reddison은 자신이 점유하고 있는 Lock을 해지할 때 채널에  획득하려는 채널에 Lock 사용 해제 메세지를 보내 Lock을 사용할 수 있도록 한다.<br>
+  - Lock 획득을 대기하던 쓰레드들은 메세지 확인 후 Lock 획득을 시도한다.<br>
+  - Reddison은 Lettuce와 다르게 메세지를 수신했을 때 Lock 획득을 시도하기 때문에 Redis의 부하를 줄일 수 있다.<br>
+  - 장점
+    - pub-sub 기반의 구현이기 때문에 Lettuce와 비교해 부하가 적음
+  - 단점
+    - 구현이 복잡하고 별도의 라이브러리 필요함
+    - 라이브러리에 대한 학습이 별도로 필요함
+    <br><br>
+- 재시도가 필요하지 않은 lock은 Lettuce 활용
+- 재시도가 필요한 경우 Redisson 활용
 </details>
