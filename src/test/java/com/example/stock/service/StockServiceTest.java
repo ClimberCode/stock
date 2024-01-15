@@ -18,8 +18,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class StockServiceTest {
     @Autowired
     private StockRepository stockRepository;
+//    @Autowired
+//    private StockService stockService;
+
     @Autowired
-    private StockService stockService;
+    private PessimisticLockStockService stockService;
 
     @BeforeEach
     public void before() {

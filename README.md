@@ -28,10 +28,10 @@
      2 일차
   </summary>
      - PessimisticLock<br>
-      
-    - 장점 <br>
+    
+  - 장점
       충돌이 빈번하게 일어난다면 optimistic Lock 보다 좋은 성능을 발휘한다.<br>
       Lock을 통해 업데이트를 제어하기 때문에 데이터 정합성이 보장된다.<br>
-    - 단점 <br>
-      Lock을 직접 걸기 때문에 성능 저하를 일으킬 수 있다.<br>
+  - 단점
+  Lock을 직접 걸기 때문에 성능 저하를 일으킬 수 있다.<br>
 </details>
