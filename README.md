@@ -102,3 +102,14 @@
 - 재시도가 필요하지 않은 lock은 Lettuce 활용
 - 재시도가 필요한 경우 Redisson 활용
 </details>
+
+MySql과 Redis
+- 
+- Mysql
+  - Mysql을 사용중이라면 별도의 비용없이 사용 가능함
+  - 어느정도의 트래픽까지는 문제없이 활용 가능
+  - Redis 보다는 성능이 낮음
+- Redis
+  - 활용중인 Redis가 없다면 별도의 구축비용과 인프라 관리비용이 발생
+  - Mysql 보다 성능이 좋음
+
