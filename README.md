@@ -29,21 +29,35 @@
   </summary>
 
 - Pessimistic Lock<br>
-
-  - 장점<br>
-      충돌이 빈번하게 일어난다면 optimistic Lock 보다 좋은 성능을 발휘한다.<br>
-      Lock을 통해 업데이트를 제어하기 때문에 데이터 정합성이 보장된다.<br>
-  - 단점<br>
-  Lock을 직접 걸기 때문에 성능 저하를 일으킬 수 있다.<br><br>
-  
-- Optimistic Lock<br>
-  - 장점<br>
-    - 별도의 락을 잡지 않으므로 Pessimistic Lock 보다 성능상 이점이 있다.<br>
-  - 단점<br>
-    - update 실패로 인한 재시도 로직을 개발자가 직접 작성해야 한다.<br>
+  -
+    - 장점<br>
+        충돌이 빈번하게 일어난다면 optimistic Lock 보다 좋은 성능을 발휘한다.<br>
+        Lock을 통해 업데이트를 제어하기 때문에 데이터 정합성이 보장된다.<br>
+    - 단점<br>
+    Lock을 직접 걸기 때문에 성능 저하를 일으킬 수 있다.
+    <br><br>
+- Optimistic Lock
+  - 
+    - 장점<br>
+      - 별도의 락을 잡지 않으므로 Pessimistic Lock 보다 성능상 이점이 있다.<br>
+    - 단점<br>
+      - update 실패로 인한 재시도 로직을 개발자가 직접 작성해야 한다.<br>
   
 - 충돌이 빈번할 경우 Pessimistic Lock 
-- 빈번하지 않을 경우 Optimistic Lock 
+- 빈번하지 않을 경우 Optimistic Lock
+  <br><br>
+- Named Lock
+  - 
+  - Pessimistic Lock 과  Optimistic Lock이 엔티티에 직접 Lock을 걸었다면 Named Lock은 별도의 공간에 Lock을 걸게 된다.<br>
+  - Data Source를 분리해서 사용해야함
+    - 같은 데이터 소스를 사용하면 커넥션 풀이 부족해져 다른 서비스에 영향을 끼칠 수 있음.
+  - 주로 분산 락을 구현할 때 사용
+  - 장점 
+    - 타임아웃 구현하기 쉬움
+    - 데이터 삽입 정합성을 맞출 때 편리
+  - 단점
+    - 트랜잭션 종료시 락 해제, 세션 관리에 주의.
+    - 구현 방법 복잡함.
 
 
 </details>
